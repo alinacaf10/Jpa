@@ -20,17 +20,17 @@ public class UserSkill {
     @Column(name = "power")
     private int power;
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     private User user;
     @ManyToOne
-    @JoinColumn(name = "skill_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "skill_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     private Skill skill;
 
     public UserSkill(Integer userSkillId, User user, Skill skill, int power) {
-        this.id=userSkillId;
-        this.user=user;
-        this.skill=skill;
-        this.power=power;
+        this.id = userSkillId;
+        this.user = user;
+        this.skill = skill;
+        this.power = power;
 
     }
 

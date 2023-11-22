@@ -1,8 +1,8 @@
 package entity;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,9 +10,11 @@ import java.util.Objects;
 @Table(name = "user", schema = "db")
 public class User {
 
+    //TODO: Give some line breaks between fields to make the code more readable
     @Column(name = "birthdate")
     @Temporal(TemporalType.DATE)
-    private java.util.Date birthdate;
+    private Date birthDate;
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
@@ -47,10 +49,10 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Collection<EmploymentHistory> employmentHistoriesById;
     @ManyToOne
-    @JoinColumn(name = "birth_place_id", referencedColumnName = "id")
+    @JoinColumn(name = "birth_place_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Country birthplace;
     @ManyToOne
-    @JoinColumn(name = "nationality_id", referencedColumnName = "id")
+    @JoinColumn(name = "nationality_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Country nationality;
     @OneToMany(mappedBy = "user")
     private Collection<UserSkill> userSkillsById;
@@ -62,12 +64,13 @@ public class User {
         this.id = id;
     }
 
+    //TODO: Do not put every field into constructor, use setters or create Builder design pattern
     public User(int id, String name, String surname,
-                int age, String email,String profileDescription, String phone,
+                int age, String email, String profileDescription, String phone,
                 Date birthDate, Country birthplace, Country nationality,
                 List<UserSkill> skills) {
         this.id = id;
-        this.profileDescription=profileDescription;
+        this.profileDescription = profileDescription;
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -172,7 +175,6 @@ public class User {
         this.skills = skills;
     }
 
-
     public Integer getBirthPlaceId() {
         return birthPlaceId;
     }
@@ -189,6 +191,7 @@ public class User {
         this.nationalityId = nationalityId;
     }
 
+    //TODO: Do not put every fields into equals and hashCode
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -232,8 +235,6 @@ public class User {
         this.employmentHistoriesById = employmentHistoriesById;
     }
 
-
-
     public Collection<UserSkill> getUserSkillsById() {
         return userSkillsById;
     }
@@ -242,11 +243,11 @@ public class User {
         this.userSkillsById = userSkillsById;
     }
 
-    public java.util.Date getBirthdate() {
-        return birthdate;
+    public java.util.Date getBirthDate() {
+        return birthDate;
     }
 
-    public void setBirthdate(java.util.Date birthdate) {
-        this.birthdate = birthdate;
+    public void setBirthDate(java.util.Date birthDate) {
+        this.birthDate = birthDate;
     }
 }

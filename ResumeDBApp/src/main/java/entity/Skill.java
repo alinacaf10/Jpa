@@ -18,8 +18,8 @@ public class Skill {
     private Collection<UserSkill> userSkillsById;
 
     public Skill(int id, String name) {
-        this.id=id;
-        this.name=name;
+        this.id = id;
+        this.name = name;
     }
 
     public Skill() {

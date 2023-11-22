@@ -1,7 +1,7 @@
 package entity;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -11,11 +11,11 @@ public class EmploymentHistory {
     @Basic(optional = false)
     @Column(name = "begin_date")
     @Temporal(TemporalType.DATE)
-    private java.util.Date beginDate;
+    private Date beginDate;
     @Basic(optional = false)
     @Column(name = "end_date")
     @Temporal(TemporalType.DATE)
-    private java.util.Date endDate;
+    private Date endDate;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
@@ -30,14 +30,14 @@ public class EmploymentHistory {
     @Column(name = "user_id")
     private Integer userId;
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id", insertable = false, updatable = false)
     private User user;
 
-    public EmploymentHistory(Integer id, String header, java.util.Date beginDate, java.util.Date endDate, String jobDesc, User user) {
+    public EmploymentHistory(Integer id, String header, Date beginDate, Date endDate, String jobDesc, User user) {
         this.id = id;
         this.header = header;
-        this.beginDate = (Date) beginDate;
-        this.endDate = (Date) endDate;
+        this.beginDate = beginDate;
+        this.endDate = endDate;
         this.jobDesc = jobDesc;
         this.user = user;
     }
@@ -61,22 +61,6 @@ public class EmploymentHistory {
 
     public void setHeader(String header) {
         this.header = header;
-    }
-
-    public Date getBeginDate() {
-        return beginDate;
-    }
-
-    public void setBeginDate(Date beginDate) {
-        this.beginDate = beginDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
     }
 
     public String getJobDesc() {
@@ -116,19 +100,19 @@ public class EmploymentHistory {
         this.user = user;
     }
 
-    public java.util.Date getBeginDate() {
+    public Date getBeginDate() {
         return beginDate;
     }
 
-    public void setBeginDate(java.util.Date beginDate) {
+    public void setBeginDate(Date beginDate) {
         this.beginDate = beginDate;
     }
 
-    public java.util.Date getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(java.util.Date endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 }

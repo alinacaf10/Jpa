@@ -1,12 +1,12 @@
 package entity;
 
 import entity.User;
-import java.sql.Date;
+import java.util.Date;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.7.7.v20200504-rNA", date="2023-11-21T23:21:34")
+@Generated(value="EclipseLink-2.7.7.v20200504-rNA", date="2023-11-22T17:26:40")
 @StaticMetamodel(EmploymentHistory.class)
 public class EmploymentHistory_ { 
 
