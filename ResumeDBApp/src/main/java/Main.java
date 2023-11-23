@@ -1,9 +1,10 @@
-import dao.DaoInter.SkillDaoInter;
+import dao.SkillDAO;
+import dao.UserDAO;
 
 public class Main {
     public static void main(String[] args) {
-        SkillDaoInter skillDaoInter = Context.instanceSkill();
-//        System.out.println(skillDaoInter.getSkillbyId(1).getName());
+        UserDAO user=Context.instanceUserDAO();
+        System.out.println(user.getAll());
 
         //TODO: above line will fail because there is no data in the database
     }

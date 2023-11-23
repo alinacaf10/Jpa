@@ -1,28 +1,28 @@
 
-import dao.DaoImpl.*;
-import dao.DaoInter.*;
+import dao.*;
+import dao.impl.*;
 
 
 public class Context {
     //TODO: Method names can be noun sometimes, like following situations, you can add get in front of every method
     // but this is optional, following methods' names make the intention clear.
-    public static UserDaoInter instanceUserDao(){
+    public static UserDAO instanceUserDAO(){
         return new UserDaoImpl();
     }
-    public static UserSkillDaoInter instanceUserSkillDao(){
+    public static UserSkillDAO instanceUserSkillDAO(){
         return new UserSkillDaoImpl();
     }
 
     //TODO: add Dao suffix at the end of  followings method names, because you have to follow what you did above
-    public static EmploymentDaoInter instanceEmploymentHistory(){
+    public static EmploymentDAO instanceEmploymentHistoryDAO(){
 
         return new EmploymentDaoImpl();
     }
 
-    public static SkillDaoInter instanceSkill(){
+    public static SkillDAO instanceSkillDAO(){
         return new SkillDaoImpl();
     }
-    public static CountryDaoInter instanceCountry(){
+    public static CountryDAO instanceCountryDAO(){
         return new CountryDaoImpl();
     }
 }
