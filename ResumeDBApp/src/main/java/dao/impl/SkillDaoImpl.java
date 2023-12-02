@@ -1,7 +1,7 @@
 package dao.impl;
 
 import dao.SkillDAO;
-import dao.impl.Abstract.AbstractDAO;
+import dao.impl.abstraction.AbstractDAO;
 import entity.Skill;
 
 import javax.persistence.EntityManager;
@@ -16,7 +16,7 @@ import java.util.List;
 
 public class SkillDaoImpl extends AbstractDAO implements SkillDAO {
 
-    private static final String persistance="resumeappPU";
+    private static final String PERSISTANCE="resumeappPU";
     public Skill getSkill(ResultSet rs) throws Exception {
         int id = rs.getInt("id");
         String skill = rs.getString("name");
@@ -83,10 +83,9 @@ public class SkillDaoImpl extends AbstractDAO implements SkillDAO {
     }
 
     @Override
-    public Skill getSkillbyId(int skillId) {
-        //TODO: keep 'resumeappPU' as a separate constant string field, private static final
+    public Skill getSkillById(int skillId) {
         EntityManagerFactory entityManagerFactory =
-                Persistence.createEntityManagerFactory(persistance);
+                Persistence.createEntityManagerFactory(PERSISTANCE);
         EntityManager em = entityManagerFactory.createEntityManager();
 
         Skill skill = em.find(Skill.class, skillId);

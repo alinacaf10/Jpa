@@ -1,7 +1,7 @@
 package dao.impl;
 
 import dao.EmploymentDAO;
-import dao.impl.Abstract.AbstractDAO;
+import dao.impl.abstraction.AbstractDAO;
 import entity.EmploymentHistory;
 import entity.User;
 

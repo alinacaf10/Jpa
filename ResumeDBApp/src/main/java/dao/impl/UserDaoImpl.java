@@ -1,7 +1,7 @@
 package dao.impl;
 
 import dao.UserDAO;
-import dao.impl.Abstract.AbstractDAO;
+import dao.impl.abstraction.AbstractDAO;
 import entity.Country;
 import entity.User;
 
@@ -14,27 +14,32 @@ import java.util.List;
 
 public class UserDaoImpl extends AbstractDAO implements UserDAO {
     private User getUser(ResultSet rs) throws Exception {
-        int id = Integer.parseInt(String.valueOf(rs.getInt("id")));
-        String name = rs.getString("name");
-        String surname = rs.getString("surname");
-        int age = Integer.parseInt(String.valueOf(rs.getInt("age")));
-        String email = rs.getString("email");
-        String phone = rs.getString("phone");
-        String profileDescription = rs.getString("profile_description");
+        User result=new User();
+        try {
+            int id = Integer.parseInt(String.valueOf(rs.getInt("id")));
+            String name = rs.getString("name");
+            String surname = rs.getString("surname");
+            int age = Integer.parseInt(String.valueOf(rs.getInt("age")));
+            String email = rs.getString("email");
+            String phone = rs.getString("phone");
+            String profileDescription = rs.getString("profile_description");
 
-        Date birthDate = rs.getDate("birthdate");
-        int nationalityId = (rs.getInt("nationality_id"));
-        int birthPlaceId = (rs.getInt("birth_place_id"));
+            Date birthDate = rs.getDate("birthdate");
+            int nationalityId = (rs.getInt("nationality_id"));
+            int birthPlaceId = (rs.getInt("birth_place_id"));
 
-        //TODO: mind naming convention, nationalityName, birthPlaceStr
-        String nationalityname = rs.getString("nationality");
-        String birthplacestr = rs.getString("birthplace");
+            String nationalityName = rs.getString("nationality");
+            String birthPlaceStr = rs.getString("birthplace");
 
-        Country birthplace = new Country(nationalityId, null, nationalityname);
-        Country country = new Country(birthPlaceId, birthplacestr, null);
-
-        return new User(id, name, surname, age, email, profileDescription, phone, birthDate, country, birthplace, null);
-    }
+        Country birthplace = new Country(nationalityId, null, nationalityName);
+        Country country = new Country(birthPlaceId, birthPlaceStr, null);
+        result= new User(id, name, surname, age, email, profileDescription, phone, birthDate, country, birthplace, null);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
+        }
 
     @Override
     public boolean addUser(User u) {

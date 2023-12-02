@@ -1,7 +1,7 @@
 package dao.impl;
 
 import dao.CountryDAO;
-import dao.impl.Abstract.AbstractDAO;
+import dao.impl.abstraction.AbstractDAO;
 import entity.Country;
 
 import java.sql.Connection;

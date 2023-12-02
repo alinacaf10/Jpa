@@ -1,7 +1,7 @@
 package dao.impl;
 
 import dao.UserSkillDAO;
-import dao.impl.Abstract.AbstractDAO;
+import dao.impl.abstraction.AbstractDAO;
 import entity.Skill;
 import entity.User;
 import entity.UserSkill;
@@ -24,7 +24,7 @@ public class UserSkillDaoImpl extends AbstractDAO implements UserSkillDAO {
     }
 
     @Override
-    public List<UserSkill> getAllSkillbyId(int id) {
+    public List<UserSkill> getAllSkillsById(int id) {
         List<UserSkill> userList = new ArrayList<>();
         try (Connection connect = getConnection();) {
             PreparedStatement stmt = connect.prepareStatement("select " +

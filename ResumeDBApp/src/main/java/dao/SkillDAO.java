@@ -10,6 +10,5 @@ public interface SkillDAO {
     public boolean removeSkill(int id);
     public boolean updateSkill(Skill skill);
 
-    //TODO: naming convention is wrong in method name
-    public Skill getSkillbyId(int skillId);
+    public Skill getSkillById(int skillId);
 }
